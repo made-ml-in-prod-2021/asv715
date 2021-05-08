@@ -1,0 +1,56 @@
+f"[{asctime}s] {levelname}s {message}s"
+f"[{asctime}s] {levelname}s {message}s"
+f"[{asctime}s] {levelname}s {message}s"
+f"[{asctime}s] {levelname}s {message}s"
+f"[{asctime}s] {levelname}s {message}s"
+f"[{asctime}s] {levelname}s {message}s"
+f"[{asctime}s] {levelname}s {message}s"
+f"[{asctime}s] {levelname}s {message}s"
+f"[{asctime}s] {levelname}s {message}s"
+f"[{asctime}s] {levelname}s {message}s"
+f"[{asctime}s] {levelname}s {message}s"
+f"[{asctime}s] {levelname}s {message}s"
+f"[{asctime}s] {levelname}s {message}s"
+f"[{asctime}s] {levelname}s {message}s"
+f"[{asctime}s] {levelname}s {message}s"
+f"[{asctime}s] {levelname}s {message}s"
+[2021-05-08 20:42:26] INFO Start pipeline with params TrainingPipelineParams(input_data_path='data/raw/heart.csv', output_model_path='models/model.pkl', metric_path='models/metrics.json', predict_path='models/predicts.json', splitting_params=SplittingParams(val_size=0.3, random_state=17, shuffle=True), feature_params=FeatureParams(categorical_features=['sex', 'fbs', 'restecg'], numerical_features=['cp', 'age', 'trestbps', 'chol', 'thalach', 'oldpeak', 'slope', 'ca', 'thal', 'exang'], target_col='target', use_log_trick=False), processing_params=ProcessingParams(use_scaler=True, use_poly_features=False, poly_features_max_power=1), train_params=TrainingParams(model_type='LogisticRegression', random_state=255, random_forest_estimators=100, max_depth=None, min_samples_split=3, min_samples_leaf=1, log_reg_max_iterations=500))
+[2021-05-08 20:42:26] INFO Data shape is (303, 14)
+[2021-05-08 20:42:26] INFO Train dataframe shape is (212, 14)
+[2021-05-08 20:42:26] INFO Validation dataframe shape is (91, 14)
+[2021-05-08 20:42:26] INFO Start data processing
+[2021-05-08 20:42:27] INFO Start train
+[2021-05-08 20:42:27] INFO Train features shape is (212, 17)
+[2021-05-08 20:42:27] INFO Prepare features for prediction
+[2021-05-08 20:42:27] INFO Start prediction
+[2021-05-08 20:42:27] INFO Validation features shape is (91, 17)
+[2021-05-08 20:42:27] INFO Save predictions
+[2021-05-08 20:42:27] INFO Start evaluation
+[2021-05-08 20:42:27] INFO Metrics is {'accuracy_score': 0.46153846153846156, 'roc_auc_score': 0.46535852713178294}
+[2021-05-08 20:42:27] INFO Save metrics
+[2021-05-08 20:42:27] INFO Serialize model
+[2021-05-08 20:42:27] INFO Process finished
+[2021-05-08 23:37:58] INFO Start pipeline with params TrainingPipelineParams(input_data_path='data/raw/heart.csv', output_model_path='models/model.pkl', metric_path='models/metrics.json', predict_path='models/predicts.json', splitting_params=SplittingParams(val_size=0.3, random_state=17, shuffle=True), feature_params=FeatureParams(categorical_features=['sex', 'fbs', 'restecg'], numerical_features=['cp', 'age', 'trestbps', 'chol', 'thalach', 'oldpeak', 'slope', 'ca', 'thal', 'exang'], target_col='target', use_log_trick=False), processing_params=ProcessingParams(use_scaler=True, use_poly_features=False, poly_features_max_power=1), train_params=TrainingParams(model_type='LogisticRegression22', random_state=255, random_forest_estimators=100, max_depth=None, min_samples_split=3, min_samples_leaf=1, log_reg_max_iterations=500))
+[2021-05-08 23:37:58] INFO Data shape is (303, 14)
+[2021-05-08 23:37:58] INFO Train dataframe shape is (212, 14)
+[2021-05-08 23:37:58] INFO Validation dataframe shape is (91, 14)
+[2021-05-08 23:37:58] INFO Start data processing
+[2021-05-08 23:37:58] INFO Start train
+[2021-05-08 23:37:58] INFO Train features shape is (212, 17)
+[2021-05-08 23:37:58] CRITICAL Invalid model type
+[2021-05-09 00:02:14] INFO Start pipeline with params TrainingPipelineParams(input_data_path='data/raw/heart.csv', output_model_path='models/model.pkl', metric_path='models/metrics.json', predict_path='models/predicts.json', splitting_params=SplittingParams(val_size=0.3, random_state=17, shuffle=True), feature_params=FeatureParams(categorical_features=['sex', 'fbs', 'restecg'], numerical_features=['cp', 'age', 'trestbps', 'chol', 'thalach', 'oldpeak', 'slope', 'ca', 'thal', 'exang'], target_col='target', use_log_trick=False), processing_params=ProcessingParams(use_scaler=True, use_poly_features=False, poly_features_max_power=1), train_params=TrainingParams(model_type='LogisticRegression', random_state=255, random_forest_estimators=100, max_depth=None, min_samples_split=3, min_samples_leaf=1, log_reg_max_iterations=500))
+[2021-05-09 00:02:14] INFO Data shape is (303, 14)
+[2021-05-09 00:02:14] INFO Train dataframe shape is (212, 14)
+[2021-05-09 00:02:14] INFO Validation dataframe shape is (91, 14)
+[2021-05-09 00:02:14] INFO Start data processing
+[2021-05-09 00:02:14] INFO Start train
+[2021-05-09 00:02:14] INFO Train features shape is (212, 17)
+[2021-05-09 00:02:14] INFO Prepare features for prediction
+[2021-05-09 00:02:14] INFO Start prediction
+[2021-05-09 00:02:14] INFO Validation features shape is (91, 17)
+[2021-05-09 00:02:14] INFO Save predictions
+[2021-05-09 00:02:14] INFO Start evaluation
+[2021-05-09 00:02:14] INFO Metrics is {'accuracy_score': 0.46153846153846156, 'roc_auc_score': 0.46535852713178294}
+[2021-05-09 00:02:14] INFO Save metrics
+[2021-05-09 00:02:14] INFO Serialize model
+[2021-05-09 00:02:14] INFO Process finished

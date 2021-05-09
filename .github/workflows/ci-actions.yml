@@ -5,7 +5,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-pylint
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.7'
+      - uses: fylein/python-pylint-github-action@v1
+        with:
+          args: pylint ml_project/ml_process
       - uses: actions/setup-pytest
-      - run: pylint ml_project/ml_process
       - run: pytest ml_project/tests

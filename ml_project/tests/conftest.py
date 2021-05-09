@@ -1,3 +1,4 @@
+import os
 import pytest
 import numpy as np
 import pandas as pd
@@ -11,7 +12,8 @@ PATH_TO_SAMPLE_DATASET = 'sample.csv'
 
 @pytest.fixture()
 def sample_dataset_path():
-    return PATH_TO_SAMPLE_DATASET
+    current_dir = os.path.dirname(__file__)
+    return os.path.join(current_dir, PATH_TO_SAMPLE_DATASET)
 
 
 @pytest.fixture()

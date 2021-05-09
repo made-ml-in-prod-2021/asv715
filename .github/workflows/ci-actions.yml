@@ -11,5 +11,7 @@ jobs:
       - uses: fylein/python-pylint-github-action@v1
         with:
           args: pylint ml_project/ml_process
-      - uses: actions/setup-pytest
+      - run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
       - run: pytest ml_project/tests

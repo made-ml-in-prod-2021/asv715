@@ -11,7 +11,7 @@ jobs:
       - uses: py-actions/py-dependency-install@v2
         with:
           path: "ml_project/requirements.txt"
+      - run: pytest ml_project/tests
       - uses: fylein/python-pylint-github-action@v1
         with:
           args: pylint ml_project/ml_process
-      - run: pytest ml_project/tests

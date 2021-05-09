@@ -1,4 +1,6 @@
-import json
+"""
+Main module to train, predict and evaluate models
+"""
 from typing import Tuple, Dict
 import click
 import pandas as pd

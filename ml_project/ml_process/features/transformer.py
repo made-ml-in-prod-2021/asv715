@@ -14,9 +14,20 @@ class PolynomialFeatures(BaseEstimator, TransformerMixin):
         self.power = power
 
     def fit(self, X, y=None):
+        """
+        Implement fit method from the base class
+        :param X: features
+        :param y: target
+        :return: link to class instance
+        """
         return self
 
     def transform(self, features: np.ndarray) -> np.ndarray:
+        """
+        Implement transform method from the base class
+        :param features: features array
+        :return: transformed features array
+        """
         result = np.zeros_like(features)
 
         for power in range(1, self.power + 1):
@@ -26,11 +37,17 @@ class PolynomialFeatures(BaseEstimator, TransformerMixin):
 
 
 class FeaturesTransformer:
-    def __init__(self, feature_params: FeatureParams, processing_params: ProcessingParams) -> None:
+    def __init__(
+        self, feature_params: FeatureParams, processing_params: ProcessingParams
+    ) -> None:
         self.feature_params = feature_params
         self.processing_params = processing_params
 
     def build_categorical_pipeline(self) -> Pipeline:
+        """
+        Build pipeline for categorical features
+        :return: features pipeline
+        """
         return Pipeline(
             [
                 ("impute", SimpleImputer(missing_values=np.nan, strategy="most_frequent")),
@@ -39,6 +56,10 @@ class FeaturesTransformer:
         )
 
     def build_numerical_pipeline(self) -> Pipeline:
+        """
+        Build pipeline for numerical features
+        :return: features pipeline
+        """
         pipe = [
             ("impute", SimpleImputer(missing_values=np.nan, strategy="mean")),
         ]
@@ -56,6 +77,11 @@ class FeaturesTransformer:
         return Pipeline(pipe)
 
     def transform(self, dataframe: pd.DataFrame) -> np.ndarray:
+        """
+        Transform passed dataframe
+        :param dataframe: initial features
+        :return: array with transformed features
+        """
         pipe = []
 
         if self.feature_params.categorical_features is not None\

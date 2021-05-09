@@ -1,3 +1,6 @@
+"""
+Setup logger for the application
+"""
 import logging
 import logging.config
 import yaml

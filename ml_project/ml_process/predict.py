@@ -1,3 +1,6 @@
+"""
+Get predictions of the specified model for test sample
+"""
 import click
 from ml_process.data import read_data
 from ml_process.models.model_fit_predict import load_model, predict_model

@@ -1,3 +1,6 @@
+"""
+Extract and transform features and target from the dataframe
+"""
 from typing import Tuple
 import numpy as np
 import pandas as pd

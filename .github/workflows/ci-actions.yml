@@ -1,0 +1,9 @@
+name: ml-project-github-actions
+on: [push]
+jobs:
+  python-ci:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: pylint ml_project/ml_process
+      - run: pytest ml_project/tests

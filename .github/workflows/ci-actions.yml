@@ -12,7 +12,7 @@ jobs:
         with:
           path: "ml_project/requirements.txt"
       - run: cd ml_project && pip install -e .
-      - run: pytest tests
+      - run: pytest ml_project/tests
       - uses: fylein/python-pylint-github-action@v1
         with:
-          args: pylint ml_process
+          args: pylint ml_project/ml_process

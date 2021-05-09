@@ -6,7 +6,7 @@ from ml_process.features import make_features
 from ml_process.entities.feature_params import FeatureParams
 from ml_process.entities.processing_params import ProcessingParams
 
-PATH_TO_SAMPLE_DATASET = 'tests/sample.csv'
+PATH_TO_SAMPLE_DATASET = 'sample.csv'
 
 
 @pytest.fixture()

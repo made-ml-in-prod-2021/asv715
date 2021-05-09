@@ -15,4 +15,4 @@ jobs:
       - run: pytest ml_project/tests
       - uses: fylein/python-pylint-github-action@v1
         with:
-          args: cd ml_project && pip install -e . && pylint ml_project/ml_process
+          args: cd ml_project && pip install -e . && pylint ml_process

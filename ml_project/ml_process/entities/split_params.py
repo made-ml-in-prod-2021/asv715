@@ -5,3 +5,4 @@ from dataclasses import dataclass, field
 class SplittingParams:
     val_size: float = field(default=0.2)
     random_state: int = field(default=13)
+    shuffle: bool = field(default=True)

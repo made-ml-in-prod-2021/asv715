@@ -1,65 +1,37 @@
+from typing import Tuple
 import numpy as np
 import pandas as pd
-from sklearn.compose import ColumnTransformer
-from sklearn.impute import SimpleImputer
-from sklearn.pipeline import Pipeline
-from sklearn.preprocessing import OneHotEncoder
-
-from ml_proj.ml_project import FeatureParams
+from ml_process.entities.feature_params import FeatureParams
+from ml_process.entities.processing_params import ProcessingParams
+from .transformer import FeaturesTransformer
 
 
-def process_categorical_features(categorical_df: pd.DataFrame) -> pd.DataFrame:
+def make_features(
+    dataframe: pd.DataFrame,
+    feature_params: FeatureParams,
+    processing_params: ProcessingParams,
+    handle_target: bool = True
+) -> Tuple[pd.DataFrame, pd.Series]:
+    """
+    Transform initial dataframe and extract features and target
+    :param dataframe: initial dataframe
+    :param feature_params: feature params
+    :param processing_params: params for processing feature types and values
+    :param handle_target: need to extract target
+    :return: transformed dataframe and target in Series
+    """
+    transformer = FeaturesTransformer(feature_params, processing_params)
 
-    categorical_pipeline = build_categorical_pipeline()
-    return pd.DataFrame(categorical_pipeline.fit_transform(categorical_df).toarray())
+    if handle_target:
+        features = dataframe.drop([feature_params.target_col], axis=1)
+        target = dataframe[feature_params.target_col]
 
+        if feature_params.use_log_trick:
+            target = pd.Series(np.log(target.to_numpy()))
 
-def build_categorical_pipeline() -> Pipeline:
-    categorical_pipeline = Pipeline(
-        [
-            ("impute", SimpleImputer(missing_values=np.nan, strategy="most_frequent")),
-            ("ohe", OneHotEncoder()),
-        ]
-    )
-    return categorical_pipeline
+        features = transformer.transform(features)
+    else:
+        target = None
+        features = dataframe.copy()
 
-
-def process_numerical_features(numerical_df: pd.DataFrame) -> pd.DataFrame:
-    num_pipeline = build_numerical_pipeline()
-    return pd.DataFrame(num_pipeline.fit_transform(numerical_df))
-
-
-def build_numerical_pipeline() -> Pipeline:
-    num_pipeline = Pipeline(
-        [("impute", SimpleImputer(missing_values=np.nan, strategy="mean")),]
-    )
-    return num_pipeline
-
-
-def make_features(transformer: ColumnTransformer, df: pd.DataFrame) -> pd.DataFrame:
-    return pd.DataFrame(transformer.transform(df).toarray())
-
-
-def build_transformer(params: FeatureParams) -> ColumnTransformer:
-    transformer = ColumnTransformer(
-        [
-            (
-                "categorical_pipeline",
-                build_categorical_pipeline(),
-                params.categorical_features,
-            ),
-            (
-                "numerical_pipeline",
-                build_numerical_pipeline(),
-                params.numerical_features,
-            ),
-        ]
-    )
-    return transformer
-
-
-def extract_target(df: pd.DataFrame, params: FeatureParams) -> pd.Series:
-    target = df[params.target_col]
-    if params.use_log_trick:
-        target = pd.Series(np.log(target.to_numpy()))
-    return target
+    return pd.DataFrame(features), target

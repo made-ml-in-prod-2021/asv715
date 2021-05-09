@@ -1,0 +1,27 @@
+version: 1
+formatters:
+  simple:
+    class: logging.Formatter
+    format: "[%(asctime)s] %(levelname)s %(message)s"
+    datefmt: "%Y-%m-%d %H:%M:%S"
+handlers:
+  file_handler_info:
+    class: logging.FileHandler
+    filename: logs/ml_project.log
+    level: DEBUG
+    formatter: simple
+  file_handler_warning:
+    class: logging.FileHandler
+    filename: logs/ml_project.warn
+    level: WARNING
+    formatter: simple
+  file_handler_critical:
+    class: logging.FileHandler
+    filename: logs/ml_project.crit
+    level: CRITICAL
+    formatter: simple
+loggers:
+  ml_project:
+    level: DEBUG
+    handlers: [file_handler_info, file_handler_warning, file_handler_critical]
+    propagate: no

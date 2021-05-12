@@ -1,3 +1,6 @@
+"""
+Classes for features processing
+"""
 import numpy as np
 import pandas as pd
 from sklearn.compose import ColumnTransformer
@@ -10,14 +13,17 @@ from ml_process.entities.processing_params import ProcessingParams
 
 
 class PolynomialFeatures(BaseEstimator, TransformerMixin):
+    """
+    Create polynomial features
+    """
     def __init__(self, power):
         self.power = power
 
+    # pylint: disable=invalid-name
+    # pylint: disable=unused-argument
     def fit(self, X, y=None):
         """
         Implement fit method from the base class
-        :param X: features
-        :param y: target
         :return: link to class instance
         """
         return self
@@ -37,12 +43,16 @@ class PolynomialFeatures(BaseEstimator, TransformerMixin):
 
 
 class FeaturesTransformer:
+    """
+    Features pipeline transformations
+    """
     def __init__(
         self, feature_params: FeatureParams, processing_params: ProcessingParams
     ) -> None:
         self.feature_params = feature_params
         self.processing_params = processing_params
 
+    # pylint: disable=no-self-use
     def build_categorical_pipeline(self) -> Pipeline:
         """
         Build pipeline for categorical features

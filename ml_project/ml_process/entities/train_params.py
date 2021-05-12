@@ -1,8 +1,14 @@
+"""
+Dataclass to work with train models
+"""
 from dataclasses import dataclass, field
 
 
 @dataclass()
 class TrainingParams:
+    """
+    Dataclass to work with train params
+    """
     model_type: str = field(default="LogisticRegression")
     random_state: int = field(default=255)
     random_forest_estimators: int = field(default=100)

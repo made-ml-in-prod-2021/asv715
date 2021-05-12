@@ -1,3 +1,6 @@
+"""
+Dataclass and function for train params
+"""
 from dataclasses import dataclass
 import yaml
 from marshmallow_dataclass import class_schema
@@ -7,8 +10,12 @@ from .processing_params import ProcessingParams
 from .train_params import TrainingParams
 
 
+# pylint: disable=too-many-instance-attributes
 @dataclass()
 class TrainingPipelineParams:
+    """
+    Dataclass for train params
+    """
     input_data_path: str
     output_model_path: str
     metric_path: str

@@ -1,3 +1,6 @@
+"""
+Entry point to features module
+"""
 from .build_features import make_features
 from .transformer import FeaturesTransformer
 

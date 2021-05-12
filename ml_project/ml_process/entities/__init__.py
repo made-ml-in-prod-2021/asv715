@@ -1,3 +1,6 @@
+"""
+Entry point to entities module
+"""
 from .feature_params import FeatureParams
 from .split_params import SplittingParams
 from .processing_params import ProcessingParams

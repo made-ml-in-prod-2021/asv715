@@ -15,6 +15,13 @@ from ml_process.utils.logger import logger
 @click.argument("model_path")
 @click.argument("test_sample_path")
 def predict_command(config_path: str, model_path: str, test_sample_path: str) -> None:
+    """
+    Get model predictions for test sample and save them into file
+    :param config_path: path to config file
+    :param model_path: path to fitted model
+    :param test_sample_path: path to test data
+    :return: None
+    """
     logger.info("Start prediction mode")
     params = read_training_pipeline_params(config_path)
 
@@ -41,4 +48,5 @@ def predict_command(config_path: str, model_path: str, test_sample_path: str) ->
 
 
 if __name__ == "__main__":
+    # pylint: disable=no-value-for-parameter
     predict_command()

@@ -6,7 +6,7 @@ import logging.config
 import yaml
 
 APPLICATION_NAME = "ml_project"
-DEFAULT_LOGGING_CONFIG_FILEPATH = 'configs/logging.conf.yml'
+DEFAULT_LOGGING_CONFIG_FILEPATH = "configs/logging.conf.yml"
 
 logger = logging.getLogger(APPLICATION_NAME)
 

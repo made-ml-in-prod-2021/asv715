@@ -26,15 +26,15 @@ def train_pipeline(training_pipeline_params: TrainingPipelineParams) -> Tuple[st
     :param training_pipeline_params:  params for training
     :return: path to serialized model and metrics in json format
     """
-    logger.info(f"Start pipeline with params {training_pipeline_params}")
+    logger.info("Start pipeline with params %s", training_pipeline_params)
     data = read_data(training_pipeline_params.input_data_path)
-    logger.info(f"Data shape is {data.shape}")
+    logger.info("Data shape is %s", data.shape)
 
     train_df, val_df = split_train_val_data(
         data, training_pipeline_params.splitting_params
     )
-    logger.info(f"Train dataframe shape is {train_df.shape}")
-    logger.info(f"Validation dataframe shape is {val_df.shape}")
+    logger.info("Train dataframe shape is %s", train_df.shape)
+    logger.info("Validation dataframe shape is %s", val_df.shape)
 
     logger.info("Start data processing")
     train_features, train_target = make_features(
@@ -49,7 +49,7 @@ def train_pipeline(training_pipeline_params: TrainingPipelineParams) -> Tuple[st
     )
 
     logger.info("Start train")
-    logger.info(f"Train features shape is {train_features.shape}")
+    logger.info("Train features shape is %s", train_features.shape)
 
     model = train_model(
         train_features, train_target, training_pipeline_params.train_params
@@ -61,7 +61,7 @@ def train_pipeline(training_pipeline_params: TrainingPipelineParams) -> Tuple[st
     )
 
     logger.info("Start prediction")
-    logger.info(f"Validation features shape is {val_features_prepared.shape}")
+    logger.info("Validation features shape is %s", val_features_prepared.shape)
     predicts = predict_model(
         model,
         val_features_prepared,
@@ -77,7 +77,7 @@ def train_pipeline(training_pipeline_params: TrainingPipelineParams) -> Tuple[st
         use_log_trick=training_pipeline_params.feature_params.use_log_trick,
     )
 
-    logger.info(f"Metrics is {metrics}")
+    logger.info("Metrics is %s", metrics)
     logger.info("Save metrics")
     save_metrics(training_pipeline_params.metric_path, metrics)
 
@@ -85,6 +85,7 @@ def train_pipeline(training_pipeline_params: TrainingPipelineParams) -> Tuple[st
     path_to_model = serialize_model(model, training_pipeline_params.output_model_path)
 
     logger.info("Process finished")
+    print(metrics)
 
     return path_to_model, metrics
 
@@ -120,4 +121,5 @@ def train_pipeline_command(config_path: str) -> None:
 
 if __name__ == "__main__":
     setup_logging()
+    # pylint: disable=no-value-for-parameter
     train_pipeline_command()

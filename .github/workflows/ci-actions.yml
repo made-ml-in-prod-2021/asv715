@@ -1,0 +1,18 @@
+name: ml-project-github-actions
+on: [push]
+jobs:
+  python-ci:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.7'
+      - uses: py-actions/py-dependency-install@v2
+        with:
+          path: "ml_project/requirements.txt"
+      - run: cd ml_project && pip install -e .
+      - run: pytest -v -p no:warnings ml_project/tests
+      - uses: fylein/python-pylint-github-action@v1
+        with:
+          args: cd ml_project && pip install -e . && pylint ml_process

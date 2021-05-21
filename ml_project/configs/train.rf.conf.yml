@@ -1,0 +1,33 @@
+input_data_path: "data/raw/heart.csv"
+output_model_path: "models/model.pkl"
+metric_path: "models/metrics.json"
+predict_path: "models/predicts.json"
+splitting_params:
+  val_size: 0.1
+  random_state: 3
+  shuffle: True
+train_params:
+  model_type: "RandomForestClassifier"
+  random_forest_estimators: 100
+  max_depth: 50
+  min_samples_split: 2
+  min_samples_leaf: 1
+processing_params:
+  use_poly_features: True
+  poly_features_max_power: 3
+feature_params:
+  numerical_features:
+    - "cp"
+    - "age"
+    - "trestbps"
+    - "chol"
+    - "restecg"
+    - "thalach"
+    - "oldpeak"
+    - "slope"
+    - "ca"
+    - "thal"
+    - "sex"
+    - "fbs"
+    - "exang"
+  target_col: "target"
